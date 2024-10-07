@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             val startButton = findViewById<Button>(R.id.start)
             val progressText = findViewById<TextView>(R.id.progressText)
             startButton.text = getString(R.string.start)
-            progressText.text = getString(R.string.complete)
+            progressText.text = getString(R.string.completed)
         }
     }
 
