@@ -28,25 +28,25 @@ class MainActivity : AppCompatActivity() {
 
     private suspend fun mockFileDownloader() {
         withContext(Dispatchers.Main) {
-            val startButton = findViewById<Button>(R.id.start)
-            startButton.text = getString(R.string.download)
+            val startBut = findViewById<Button>(R.id.start)
+            startBut.text = getString(R.string.downloading)
         }
 
         for (downloadProgress in 0..100 step 10) {
             Log.d(TAG, "Download Progress $downloadProgress%")
             withContext(Dispatchers.Main) {
-                val progressText = findViewById<TextView>(R.id.progressText)
-                progressText.text = "Download Progress $downloadProgress%"
+                val progText = findViewById<TextView>(R.id.progressText)
+                progText.text = "Download Progress $downloadProgress%"
             }
             delay(1000)
         }
 
 
         withContext(Dispatchers.Main) {
-            val startButton = findViewById<Button>(R.id.start)
-            val progressText = findViewById<TextView>(R.id.progressText)
-            startButton.text = getString(R.string.start)
-            progressText.text = getString(R.string.completed)
+            val startBut = findViewById<Button>(R.id.start)
+            val progText = findViewById<TextView>(R.id.progressText)
+            startBut.text = getString(R.string.start)
+            progText.text = getString(R.string.complete)
         }
     }
 
@@ -58,10 +58,10 @@ class MainActivity : AppCompatActivity() {
 
     fun stopDownload(view: View) {
         GlobalScope.launch(Dispatchers.Main) {
-            val startButton = findViewById<Button>(R.id.start)
-            val progressText = findViewById<TextView>(R.id.progressText)
-            startButton.text = getString(R.string.start)
-            progressText.text = getString(R.string.cancelled)
+            val startBut = findViewById<Button>(R.id.start)
+            val progText = findViewById<TextView>(R.id.progressText)
+            startBut.text = getString(R.string.start)
+            progText.text = getString(R.string.cancel)
         }
         job?.cancel()
     }
